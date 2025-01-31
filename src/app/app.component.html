@@ -1,0 +1,27 @@
+<div class="contenedor">
+  <h1>Mis tareas</h1>
+  <p>Todas tus tareas en un lugar</p>
+
+  <!-- Input de agregar tareas -->
+  <input type="text" [(ngModel)]="nuevaTarea" placeholder="Escribe tus tareas aquí" (keyup.enter)="agregarTarea()" />
+  <button (click)="agregarTarea()">Agregar</button>
+
+  <!-- Lista de tareas -->
+  <div class="lista-tareas">
+    <ul>
+      <li *ngFor="let tarea of obtenerTareasFiltradas()">
+        <input type="checkbox" [(ngModel)]="tarea.completada" />
+        <span [class.completada]="tarea.completada">{{ tarea.texto }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!--filtros -->
+  <div class="task-footer">
+    <span>{{ tareas.length }} items</span>
+    <button [class.activo]="filtro === 'todas'" (click)="mostrarTodas()">Todas</button>
+    <button [class.activo]="filtro === 'pendientes'" (click)="mostrarPendientes()">Pendientes</button>
+    <button [class.activo]="filtro === 'completadas'" (click)="mostrarCompletadas()">Completadas</button>
+    <button class="borrar" (click)="limpiarCompletadas()">Limpiar completadas</button>
+  </div>
+</div>

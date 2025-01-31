@@ -1,0 +1,96 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.contenedor {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+}
+
+h1 {
+  margin: 0;
+}
+
+p {
+  color: gray;
+  margin-bottom: 15px;
+}
+
+input[type="text"] {
+  width: 90%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+button {
+  background: #2575fc;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button:hover {
+  background: #1a5dd8;
+}
+
+.lista-tareas {
+  text-align: left;
+  margin-top: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.completada {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.task-footer {
+  margin-top: 10px;
+  font-size: 14px;
+  color: gray;
+}
+
+.task-footer button {
+  background: transparent;
+  color: black;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+}
+
+.task-footer button.activo {
+  background: #2575fc;
+  color: white;
+}
+
+.borrar {
+  color: red;
+}
