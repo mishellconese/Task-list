@@ -1,96 +1,206 @@
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #6a11cb, #2575fc);
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
+/* Contenedor principal */
 .contenedor {
-  background: white;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 400px;
+  margin: 50px auto;
   padding: 20px;
+  background: white;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 350px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-h1 {
-  margin: 0;
-}
-
-p {
-  color: gray;
-  margin-bottom: 15px;
+/* Input de agregar tarea */
+.input-container {
+  display: flex;
+  gap: 10px;
 }
 
 input[type="text"] {
-  width: 90%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 button {
-  background: #2575fc;
-  color: white;
+  padding: 10px;
   border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
+  background: #7a00ff;
+  color: white;
+  border-radius: 20px;
   cursor: pointer;
-  margin: 5px;
 }
 
 button:hover {
-  background: #1a5dd8;
+  background: #5c00cc;
 }
 
-.lista-tareas {
-  text-align: left;
-  margin-top: 10px;
-}
-
+/* Lista de tareas */
 ul {
   list-style: none;
   padding: 0;
+  margin: 20px 0;
 }
 
 li {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #7a00ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #7a00ff;
+  border-color: #7a00ff;
+}
+
+input[type="checkbox"]:checked::before {
+  content: '✔';
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  top: 1px;
+  left: 4px;
+}
+
+/* Input de edición */
+.edit-input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 5px;
+  font-size: 16px;
+  width: 70%;
 }
 
-li input[type="checkbox"] {
-  margin-right: 10px;
+/* Botón de edición */
+.edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 5px;
 }
 
+/* Botón de eliminar */
+.delete-button {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Tareas completadas */
 .completada {
   text-decoration: line-through;
   color: gray;
 }
 
+/* Filtros */
 .task-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   margin-top: 10px;
-  font-size: 14px;
-  color: gray;
 }
 
 .task-footer button {
-  background: transparent;
-  color: black;
-  border: 1px solid #ddd;
   padding: 5px 10px;
+  border: 1px solid #7a00ff;
+  background: white;
+  color: #7a00ff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.task-footer button.activo {
-  background: #2575fc;
+.task-footer button.activo,
+.task-footer button:hover {
+  background: #7a00ff;
   color: white;
 }
 
+/* Botón para limpiar tareas */
 .borrar {
-  color: red;
+  background: #ff4c4c;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.borrar:hover {
+  background: #cc0000;
+}
+
+/* Botones generales */
+button {
+  padding: 8px 12px; /* Reduce el tamaño del padding */
+  font-size: 12px;  /* Reduce el tamaño de la fuente */
+  margin: 5px;  /* Agrega espacio entre botones */
+}
+
+/* Botones en el footer */
+.task-footer button {
+  padding: 6px 10px;
+  font-size: 12px;
+  margin: 5px;
+}
+
+/* Botón de limpiar tareas */
+.borrar {
+  font-size: 12px;
+  padding: 6px 10px;
+  margin-top: 10px;  /* Agrega espacio superior */
+}
+
+/* Separar los botones de editar y eliminar */
+.edit-button,
+.delete-button {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+/* Barra superior con fondo azul degradado */
+.barra-superior {
+  background: linear-gradient(to right, #4A00E0, #8E2DE2); /* Degradado azul */
+  color: white; /* Texto en blanco */
+  text-align: center;
+  padding: 20px 0;
+  border-radius: 0 0 15px 15px; /* Bordes redondeados abajo */
+}
+
+/* Estilos para el título */
+.barra-superior h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Estilos para el subtítulo */
+.barra-superior p {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px 0 0;
+  font-size: 14px;
 }

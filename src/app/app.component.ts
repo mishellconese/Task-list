@@ -11,12 +11,12 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   nuevaTarea: string = '';
-  tareas: { texto: string, completada: boolean }[] = [];
+  tareas: { texto: string, completada: boolean, editando: boolean }[] = [];
   filtro: string = 'todas'; // Puede ser todas, pendientes o completadas
 
   agregarTarea() {
     if (this.nuevaTarea.trim()) {
-      this.tareas.push({ texto: this.nuevaTarea, completada: false });
+      this.tareas.push({ texto: this.nuevaTarea, completada: false, editando: false });
       this.nuevaTarea = '';
     }
   }
@@ -44,5 +44,17 @@ export class AppComponent {
 
   limpiarCompletadas() {
     this.tareas = this.tareas.filter(tarea => !tarea.completada);
+  }
+
+  eliminarTarea(index: number) {
+    this.tareas.splice(index, 1);
+  }
+
+  editarTarea(tarea: any) {
+    tarea.editando = true;
+  }
+
+  guardarEdicion(tarea: any) {
+    tarea.editando = false;
   }
 }

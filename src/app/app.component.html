@@ -1,22 +1,38 @@
-<div class="contenedor">
+<div class="barra-superior">
   <h1>Mis tareas</h1>
   <p>Todas tus tareas en un lugar</p>
+</div>
+
+<div class="contenedor">
 
   <!-- Input de agregar tareas -->
-  <input type="text" [(ngModel)]="nuevaTarea" placeholder="Escribe tus tareas aquí" (keyup.enter)="agregarTarea()" />
-  <button (click)="agregarTarea()">Agregar</button>
+  <div class="input-container">
+    <input type="text" [(ngModel)]="nuevaTarea" placeholder="Escribe tus tareas aquí" (keyup.enter)="agregarTarea()" />
+    <button (click)="agregarTarea()">Agregar</button>
+  </div>
 
   <!-- Lista de tareas -->
   <div class="lista-tareas">
     <ul>
-      <li *ngFor="let tarea of obtenerTareasFiltradas()">
+      <li *ngFor="let tarea of obtenerTareasFiltradas(); let i = index">
         <input type="checkbox" [(ngModel)]="tarea.completada" />
-        <span [class.completada]="tarea.completada">{{ tarea.texto }}</span>
+
+        <!-- Input para editar tarea -->
+        <input *ngIf="tarea.editando" type="text" [(ngModel)]="tarea.texto" (keyup.enter)="guardarEdicion(tarea)" class="edit-input" />
+        
+        <!-- Texto de la tarea -->
+        <span *ngIf="!tarea.editando" [class.completada]="tarea.completada">{{ tarea.texto }}</span>
+
+        <!-- Botón de editar -->
+        <button (click)="editarTarea(tarea)" class="edit-button">✏️</button>
+
+        <!-- Botón de eliminar -->
+        <button (click)="eliminarTarea(i)" class="delete-button">🗑️</button>
       </li>
     </ul>
   </div>
 
-  <!--filtros -->
+  <!-- Filtros -->
   <div class="task-footer">
     <span>{{ tareas.length }} items</span>
     <button [class.activo]="filtro === 'todas'" (click)="mostrarTodas()">Todas</button>
